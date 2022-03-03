@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'dbname' => 'main',
-    'user' => 'user',
-    'password' => '',
-    'host' => 'database.internal:3306',
+    'dbname' => 'db',
+    'user' => 'db',
+    'password' => 'db',
+    'host' => 'db:3306',
     'driver' => 'pdo_mysql',
 ];
