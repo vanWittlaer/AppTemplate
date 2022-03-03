@@ -72,7 +72,8 @@ class EventResolver implements ArgumentValueResolverInterface
         $shopId = $requestContent['source']['shopId'];
         $appVersion = (int) $requestContent['source']['appVersion'];
         $eventData = $requestContent['data'];
+        $timestamp = $requestContent['timestamp'];
 
-        yield new Event($shopUrl, $shopId, $appVersion, $eventData);
+        yield new Event($shopUrl, $shopId, $appVersion, $eventData, $timestamp);
     }
 }

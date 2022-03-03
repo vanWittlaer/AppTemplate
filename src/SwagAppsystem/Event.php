@@ -24,12 +24,15 @@ class Event
      */
     private $eventData;
 
-    public function __construct(string $shopUrl, string $shopId, int $appVersion, array $eventData)
+    private int $timestamp;
+
+    public function __construct(string $shopUrl, string $shopId, int $appVersion, array $eventData, int $timestamp)
     {
         $this->shopUrl = $shopUrl;
         $this->shopId = $shopId;
         $this->appVersion = $appVersion;
         $this->eventData = $eventData;
+        $this->timestamp = $timestamp;
     }
 
     public function getShopUrl(): string
@@ -50,5 +53,13 @@ class Event
     public function getEventData(): array
     {
         return $this->eventData;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimestamp(): int
+    {
+        return $this->timestamp;
     }
 }
