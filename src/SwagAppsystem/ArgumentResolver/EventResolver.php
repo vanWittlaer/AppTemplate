@@ -70,10 +70,24 @@ class EventResolver implements ArgumentValueResolverInterface
 
         $shopUrl = $requestContent['source']['url'];
         $shopId = $requestContent['source']['shopId'];
-        $appVersion = (int) $requestContent['source']['appVersion'];
+        $appVersion = (int)$requestContent['source']['appVersion'];
         $eventData = $requestContent['data'];
         $timestamp = $requestContent['timestamp'];
 
-        yield new Event($shopUrl, $shopId, $appVersion, $eventData, $timestamp);
+        $headers = $request->headers;
+        $shopVersion = $headers->get('sw-version');
+        $contextLanguage = $headers->get('sw-context-language');
+        $userLanguage = $headers->get('sw-user-language');
+
+        yield new Event(
+            $shopUrl,
+            $shopId,
+            $appVersion,
+            $eventData,
+            $timestamp,
+            $shopVersion,
+            $contextLanguage,
+            $userLanguage
+        );
     }
 }

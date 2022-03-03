@@ -26,13 +26,30 @@ class Event
 
     private int $timestamp;
 
-    public function __construct(string $shopUrl, string $shopId, int $appVersion, array $eventData, int $timestamp)
-    {
+    private string $shopVersion;
+
+    private string $contextLanguage;
+
+    private string $userLanguage;
+
+    public function __construct(
+        string $shopUrl,
+        string $shopId,
+        int $appVersion,
+        array $eventData,
+        int $timestamp,
+        string $shopVersion,
+        string $contextLanguage,
+        string $userLanguage
+    ) {
         $this->shopUrl = $shopUrl;
         $this->shopId = $shopId;
         $this->appVersion = $appVersion;
         $this->eventData = $eventData;
         $this->timestamp = $timestamp;
+        $this->shopVersion = $shopVersion;
+        $this->contextLanguage = $contextLanguage;
+        $this->userLanguage = $userLanguage;
     }
 
     public function getShopUrl(): string
@@ -61,5 +78,29 @@ class Event
     public function getTimestamp(): int
     {
         return $this->timestamp;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShopVersion(): string
+    {
+        return $this->shopVersion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContextLanguage(): string
+    {
+        return $this->contextLanguage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserLanguage(): string
+    {
+        return $this->userLanguage;
     }
 }
